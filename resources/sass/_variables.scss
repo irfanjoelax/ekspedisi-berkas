@@ -1,0 +1,18 @@
+// Typography
+$font-family-sans-serif: 'Quicksand', sans-serif;
+
+// Color
+$primary: #20c997;
+$danger: #ef476f;
+$warning: #ffd166;
+$success: #118ab2;
+
+// Import Bootstrap variables for use within theme
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+
+// Import spacing variables
+@import "./variables/spacing.scss";
+
+// Import navigation variables
+@import "./variables/navigation.scss";
