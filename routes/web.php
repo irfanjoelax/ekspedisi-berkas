@@ -49,4 +49,19 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/admin/keterangan/edit/{id}', [App\Http\Controllers\KeteranganController::class, 'edit']);
     Route::post('/admin/keterangan/submit/{id?}', [App\Http\Controllers\KeteranganController::class, 'submit']);
     Route::get('/admin/keterangan/delete/{id}', [App\Http\Controllers\KeteranganController::class, 'delete']);
+
+    // MASTER DATA USER
+    Route::get('/admin/user', [App\Http\Controllers\UserController::class, 'index']);
+    Route::get('/admin/user/create', [App\Http\Controllers\UserController::class, 'create']);
+    Route::get('/admin/user/edit/{id}', [App\Http\Controllers\UserController::class, 'edit']);
+    Route::post('/admin/user/submit/{id?}', [App\Http\Controllers\UserController::class, 'submit']);
+    Route::get('/admin/user/delete/{id}', [App\Http\Controllers\UserController::class, 'delete']);
+
+    // MASTER DATA PERMOHONAN
+    Route::get('/admin/permohonan', [App\Http\Controllers\PermohonanController::class, 'index']);
+    Route::get('/admin/permohonan/create', [App\Http\Controllers\PermohonanController::class, 'create']);
+    Route::get('/admin/permohonan/edit/{id}', [App\Http\Controllers\PermohonanController::class, 'edit']);
+    Route::post('/admin/permohonan/submit/{id?}', [App\Http\Controllers\PermohonanController::class, 'submit']);
+    Route::get('/admin/permohonan/delete/{id}', [App\Http\Controllers\PermohonanController::class, 'delete']);
+    Route::get('/admin/permohonan/update/status/{id}/{status}', [App\Http\Controllers\PermohonanController::class, 'update_status']);
 });

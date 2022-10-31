@@ -16,6 +16,9 @@
     <!-- favicon -->
     <link rel="shortcut icon" href="{{ asset(env('APP_LOGO')) }}" type="image/x-icon">
 
+    <!-- Script Mix -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
+
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" rel="stylesheet" />
@@ -57,14 +60,19 @@
     </nav>
     <div id="layoutSidenav">
         <div id="layoutSidenav_nav">
-            <nav class="sb-sidenav accordion sb-sidenav-light" id="sidenavAccordion">
+            <nav class="sb-sidenav accordion bg-white" id="sidenavAccordion">
                 <div class="sb-sidenav-menu">
                     <div class="nav">
-                        <div class="sb-sidenav-menu-heading">Home</div>
                         <a class="nav-link {{ $activeMenu == 'dashboard' ? 'bg-primary text-white' : '' }}"
                             href="{{ url('/admin/dashboard') }}">
                             <i class="fa-solid fa-gauge"></i>
                             <span class="ms-2">Dashboard</span>
+                        </a>
+                        <div class="sb-sidenav-menu-heading">Fitur Utama</div>
+                        <a class="nav-link {{ $activeMenu == 'permohonan' ? 'bg-primary text-white' : '' }}"
+                            href="{{ url('/admin/permohonan') }}">
+                            <i class="fa-solid fa-rectangle-list"></i>
+                            <span class="ms-2">Daftar Permohonan</span>
                         </a>
                         <div class="sb-sidenav-menu-heading">Master Data</div>
                         <a class="nav-link {{ $activeMenu == 'desa' ? 'bg-primary text-white' : '' }}"
@@ -82,11 +90,10 @@
                             <i class="fa-solid fa-check-to-slot"></i>
                             <span class="ms-2">Keterangan</span>
                         </a>
-                        <div class="sb-sidenav-menu-heading">Fitur Utama</div>
-                        <a class="nav-link {{ $activeMenu == 'permohonan' ? 'bg-primary text-white' : '' }}"
-                            href="{{ url('/admin/permohonan') }}">
-                            <i class="fa-solid fa-rectangle-list"></i>
-                            <span class="ms-2">Daftar Permohonan</span>
+                        <a class="nav-link {{ $activeMenu == 'user' ? 'bg-primary text-white' : '' }}"
+                            href="{{ url('/admin/user') }}">
+                            <i class="fa-solid fa-users"></i>
+                            <span class="ms-2">Daftar User</span>
                         </a>
                     </div>
                 </div>
@@ -146,9 +153,8 @@
     </div>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-    @include('sweetalert::alert')
     @yield('script')
+    @include('sweetalert::alert')
 </body>
 
 </html>
