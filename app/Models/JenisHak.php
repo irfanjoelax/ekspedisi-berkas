@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Permohonan extends Model
+class JenisHak extends Model
 {
     use HasFactory;
 
@@ -29,24 +29,4 @@ class Permohonan extends Model
      * @var bool
      */
     public $incrementing = false;
-
-    public function desa()
-    {
-        return $this->hasOne('App\Models\Desa', 'id', 'desa_id');
-    }
-
-    public function prosedur()
-    {
-        return $this->hasOne('App\Models\Prosedur', 'id', 'prosedur_id');
-    }
-
-    public function keterangan()
-    {
-        return $this->hasOne('App\Models\Keterangan', 'id', 'keterangan_id');
-    }
-
-    public function jenis_hak()
-    {
-        return $this->hasOne('App\Models\JenisHak', 'id', 'jenis_hak_id');
-    }
 }

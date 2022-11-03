@@ -63,6 +63,7 @@
             <nav class="sb-sidenav accordion bg-white" id="sidenavAccordion">
                 <div class="sb-sidenav-menu">
                     <div class="nav">
+                        <div class="sb-sidenav-menu-heading">Home</div>
                         <a class="nav-link {{ $activeMenu == 'dashboard' ? 'bg-primary text-white' : '' }}"
                             href="{{ url('/admin/dashboard') }}">
                             <i class="fa-solid fa-gauge"></i>
@@ -85,6 +86,11 @@
                             <i class="fa-solid fa-diagram-project"></i>
                             <span class="ms-2">Prosedur</span>
                         </a>
+                        <a class="nav-link {{ $activeMenu == 'jenis_hak' ? 'bg-primary text-white' : '' }}"
+                            href="{{ url('/admin/jenis_hak') }}">
+                            <i class="fa-solid fa-ribbon"></i>
+                            <span class="ms-2">Jenis Hak</span>
+                        </a>
                         <a class="nav-link {{ $activeMenu == 'keterangan' ? 'bg-primary text-white' : '' }}"
                             href="{{ url('/admin/keterangan') }}">
                             <i class="fa-solid fa-check-to-slot"></i>
@@ -97,10 +103,10 @@
                         </a>
                     </div>
                 </div>
-                <div class="sb-sidenav-footer">
+                {{-- <div class="sb-sidenav-footer">
                     <div class="small">Logged in as:</div>
                     Admin
-                </div>
+                </div> --}}
             </nav>
         </div>
 

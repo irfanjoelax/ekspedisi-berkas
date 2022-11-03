@@ -5,19 +5,27 @@
 @endsection
 
 @section('content')
-    <div class="row mt-4">
+    <div class="row mt-4 mb-4">
         <div class="col-md-12">
-            <a href="{{ url('admin/permohonan/create') }}" class="btn btn-primary mb-3">
-                <i class="fa-solid fa-plus"></i>
-                <span class="ms-1">Tambah</span>
-            </a>
+            <div class="mb-3">
+                <a href="{{ url('admin/permohonan/create') }}" class="btn btn-primary">
+                    <i class="fa-solid fa-plus"></i>
+                    <span class="ms-1">Tambah</span>
+                </a>
+                <a href="{{ url('admin/permohonan/export') }}" class="btn btn-warning">
+                    <i class="fa-solid fa-file-excel"></i>
+                    <span class="ms-1">Export Excel</span>
+                </a>
+            </div>
+
             <div class="bg-white p-3 rounded-4 shadow-sm table-responsive">
                 <table class="table table-bordered datatable align-middle">
                     <thead class="bg-primary text-white">
                         <tr>
-                            <th width="20%" class="text-center">Tanggal</th>
-                            <th width="50%" class="text-start">Berkas</th>
-                            <th width="20%" class="text-center">Status</th>
+                            <th width="40%" class="text-start">Berkas</th>
+                            <th width="15%" class="text-center">Tanggal</th>
+                            <th width="20%" class="text-center">Posisi</th>
+                            <th width="15%" class="text-center">Status</th>
                             <th width="10%" class="text-center">Action</th>
                         </tr>
                     </thead>
@@ -25,7 +33,7 @@
                         @php
                             function check_status($value)
                             {
-                                if ($value == 'Belum Kembali') {
+                                if ($value == 'Dikembalikan') {
                                     return 'danger';
                                 }
                             
@@ -33,10 +41,20 @@
                                     return 'primary';
                                 }
                             }
+                            
+                            function show_tujuan($value)
+                            {
+                                if ($value == 'kasi') {
+                                    return 'Kepala Seksi Penetapan Hak dan Pendaftaran';
+                                }
+                            
+                                if ($value == 'kakan') {
+                                    return 'Kepala Kantor Pertanahan';
+                                }
+                            }
                         @endphp
                         @foreach ($permohonans as $item)
                             <tr>
-                                <td class="text-center">{{ $item->tanggal }}</td>
                                 <td class="text-start">
                                     <strong>{{ $item->no_berkas . ' | ' . $item->no_hak }}</strong>
                                     <br>
@@ -46,8 +64,9 @@
                                     <span class="badge rounded-pill text-bg-info">{{ $item->prosedur->nama }}</span>
                                     <span class="badge rounded-pill text-bg-secondary">{{ $item->keterangan->nama }}</span>
                                 </td>
+                                <td class="text-center">{{ substr($item->updated_at, 0, 10) }}</td>
+                                <td class="text-center">{{ show_tujuan($item->tujuan) }}</td>
                                 <td class="text-center">
-
                                     <div class="dropdown">
                                         <button class="btn btn-sm btn-{{ check_status($item->status) }} dropdown-toggle"
                                             type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -56,8 +75,8 @@
                                         <ul class="dropdown-menu">
                                             <li>
                                                 <a class="dropdown-item"
-                                                    href="{{ url('/admin/permohonan/update/status/' . $item->id . '/belum-kembali', []) }}">
-                                                    Belum Kembali
+                                                    href="{{ url('/admin/permohonan/update/status/' . $item->id . '/dikembalikan', []) }}">
+                                                    Dikembalikan
                                                 </a>
                                             </li>
                                             <li>

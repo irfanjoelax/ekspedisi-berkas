@@ -37,4 +37,17 @@
             </div>
         </div>
     </div>
+
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="bg-white p-3 rounded-4 shadow-sm">
+                {!! $chart->renderHtml() !!}
+            </div>
+        </div>
+    </div>
+@endsection
+
+@section('script')
+    {!! $chart->renderChartJsLibrary() !!}
+    {!! $chart->renderJs() !!}
 @endsection

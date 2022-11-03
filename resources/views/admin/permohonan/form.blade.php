@@ -42,6 +42,7 @@
                     <input type="text" class="form-control" name="nama_berkas"
                         value="{{ $isEdit ? $data->nama_berkas : '' }}" placeholder="Masukkan Nama Berkas" required>
                 </div>
+
                 <div class="row">
                     <div class="col-md-6 col-12 mb-3">
                         <label for="no_berkas" class="form-label">No. Berkas</label>
@@ -49,22 +50,39 @@
                             value="{{ $isEdit ? $data->no_berkas : '' }}" placeholder="Masukkan No. Berkas" required>
                     </div>
                     <div class="col-md-6 col-12 mb-3">
+                        <label for="desa_id" class="form-label">Desa/Kecamatan</label>
+                        <select name="desa_id" class="form-select" required>
+                            @if (!$isEdit)
+                                <option value="" selected>-- Pilih Desa/Kecamatan --</option>
+                            @endif
+                            @foreach ($desas as $item)
+                                <option value="{{ $item->id }}"
+                                    {{ $isEdit ? is_selected($item->id, $data->desa_id) : '' }}>
+                                    {{ $item->nama }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 col-12 mb-3">
                         <label for="no_hak" class="form-label">No. Hak</label>
                         <input type="text" class="form-control" name="no_hak" value="{{ $isEdit ? $data->no_hak : '' }}"
                             placeholder="Masukkan No. Hak" required>
                     </div>
-                </div>
-                <div class="mb-3">
-                    <label for="desa_id" class="form-label">Desa/Kecamatan</label>
-                    <select name="desa_id" class="form-select" required>
-                        @if (!$isEdit)
-                            <option value="" selected>-- Pilih Desa/Kecamatan --</option>
-                        @endif
-                        @foreach ($desas as $item)
-                            <option value="{{ $item->id }}" {{ $isEdit ? is_selected($item->id, $data->desa_id) : '' }}>
-                                {{ $item->nama }}</option>
-                        @endforeach
-                    </select>
+                    <div class="col-md-6 col-12 mb-3">
+                        <label for="jenis_hak_id" class="form-label">Jenis Hak</label>
+                        <select name="jenis_hak_id" class="form-select" required>
+                            @if (!$isEdit)
+                                <option value="" selected>-- Pilih Jenis Hak --</option>
+                            @endif
+                            @foreach ($jenis_haks as $item)
+                                <option value="{{ $item->id }}"
+                                    {{ $isEdit ? is_selected($item->id, $data->jenis_hak_id) : '' }}>
+                                    {{ $item->nama }}</option>
+                            @endforeach
+                        </select>
+                    </div>
                 </div>
 
                 <div class="row">
@@ -95,6 +113,7 @@
                         </select>
                     </div>
                 </div>
+
                 <div class="row mb-lg-3">
                     <div class="col-md-4 col-12 mb-3">
                         <label for="tanggal" class="form-label">Tanggal</label>

@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return redirect('/login');
+    return view('welcome');
 });
 
 Auth::routes();
@@ -43,6 +43,13 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/admin/prosedur/submit/{id?}', [App\Http\Controllers\ProsedurController::class, 'submit']);
     Route::get('/admin/prosedur/delete/{id}', [App\Http\Controllers\ProsedurController::class, 'delete']);
 
+    // MASTER DATA JENIS HAK
+    Route::get('/admin/jenis_hak', [App\Http\Controllers\JenisHakController::class, 'index']);
+    Route::get('/admin/jenis_hak/create', [App\Http\Controllers\JenisHakController::class, 'create']);
+    Route::get('/admin/jenis_hak/edit/{id}', [App\Http\Controllers\JenisHakController::class, 'edit']);
+    Route::post('/admin/jenis_hak/submit/{id?}', [App\Http\Controllers\JenisHakController::class, 'submit']);
+    Route::get('/admin/jenis_hak/delete/{id}', [App\Http\Controllers\JenisHakController::class, 'delete']);
+
     // MASTER DATA KETERANGAN
     Route::get('/admin/keterangan', [App\Http\Controllers\KeteranganController::class, 'index']);
     Route::get('/admin/keterangan/create', [App\Http\Controllers\KeteranganController::class, 'create']);
@@ -64,4 +71,5 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/admin/permohonan/submit/{id?}', [App\Http\Controllers\PermohonanController::class, 'submit']);
     Route::get('/admin/permohonan/delete/{id}', [App\Http\Controllers\PermohonanController::class, 'delete']);
     Route::get('/admin/permohonan/update/status/{id}/{status}', [App\Http\Controllers\PermohonanController::class, 'update_status']);
+    Route::get('/admin/permohonan/export', [App\Http\Controllers\PermohonanController::class, 'export']);
 });

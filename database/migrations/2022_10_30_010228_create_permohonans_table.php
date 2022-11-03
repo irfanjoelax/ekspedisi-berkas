@@ -23,7 +23,7 @@ class CreatePermohonansTable extends Migration
             $table->uuid('keterangan_id');
             $table->date('tanggal');
             $table->enum('tujuan', ['kasi', 'kakan']);
-            $table->enum('status', ['Belum Kembali', 'Terkirim']);
+            $table->enum('status', ['Dikembalikan', 'Terkirim']);
             $table->timestamps();
         });
     }

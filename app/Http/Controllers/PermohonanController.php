@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\PermohonansExport;
 use App\Models\Desa;
+use App\Models\JenisHak;
 use App\Models\Keterangan;
 use App\Models\Permohonan;
 use App\Models\Prosedur;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Maatwebsite\Excel\Facades\Excel;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class PermohonanController extends Controller
@@ -16,7 +19,7 @@ class PermohonanController extends Controller
     {
         return view('admin.permohonan.index', [
             'activeMenu'  => 'permohonan',
-            'permohonans' => Permohonan::orderBy('tanggal', 'DESC')->get(),
+            'permohonans' => Permohonan::latest()->get(),
         ]);
     }
 
@@ -29,6 +32,7 @@ class PermohonanController extends Controller
             'desas'       => Desa::latest()->get(),
             'prosedurs'   => Prosedur::latest()->get(),
             'keterangans' => Keterangan::latest()->get(),
+            'jenis_haks'  => JenisHak::latest()->get(),
         ]);
     }
 
@@ -42,6 +46,7 @@ class PermohonanController extends Controller
             'desas'       => Desa::latest()->get(),
             'prosedurs'   => Prosedur::latest()->get(),
             'keterangans' => Keterangan::latest()->get(),
+            'jenis_haks'  => JenisHak::latest()->get(),
         ]);
     }
 
@@ -49,7 +54,7 @@ class PermohonanController extends Controller
     {
         $permohonan = Permohonan::find($id);
         $dataID     = Str::uuid();
-        $status     = 'Belum Kembali';
+        $status     = 'Terkirim';
 
         if ($id != null) {
             $dataID = $permohonan->id;
@@ -64,6 +69,7 @@ class PermohonanController extends Controller
             'desa_id'       => $request->desa_id,
             'prosedur_id'   => $request->prosedur_id,
             'keterangan_id' => $request->keterangan_id,
+            'jenis_hak_id'  => $request->jenis_hak_id,
             'tanggal'       => $request->tanggal,
             'tujuan'        => $request->tujuan,
             'status'        => $status,
@@ -95,5 +101,10 @@ class PermohonanController extends Controller
         Alert::info('Sukses', ucwords('Status Data permohonan Berhasil Diperbarui'));
 
         return redirect('admin/permohonan');
+    }
+
+    public function export()
+    {
+        return Excel::download(new PermohonansExport, 'daftar-permohonan.xlsx');
     }
 }
