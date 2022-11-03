@@ -64,7 +64,9 @@
                                     <span class="badge rounded-pill text-bg-info">{{ $item->prosedur->nama }}</span>
                                     <span class="badge rounded-pill text-bg-secondary">{{ $item->keterangan->nama }}</span>
                                 </td>
-                                <td class="text-center">{{ substr($item->updated_at, 0, 10) }}</td>
+                                <td class="text-center">
+                                    <small>{{ tanggal(substr($item->updated_at, 0, 10)) }}</small>
+                                </td>
                                 <td class="text-center">{{ show_tujuan($item->tujuan) }}</td>
                                 <td class="text-center">
                                     <div class="dropdown">

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Desa;
+use App\Models\JenisHak;
 use App\Models\Keterangan;
 use App\Models\Prosedur;
 use LaravelDaily\LaravelCharts\Classes\LaravelChart;
@@ -28,6 +29,7 @@ class DashboardController extends Controller
             'total_desa'       => Desa::count(),
             'total_prosedur'   => Prosedur::count(),
             'total_keterangan' => Keterangan::count(),
+            'total_jenis_hak'  => JenisHak::count(),
             'chart'            => $chart,
         ]);
     }
