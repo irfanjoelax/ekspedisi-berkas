@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             DesaSeeder::class,
             ProsedurSeeder::class,
             KeteranganSeeder::class,
+            JenisHakSeeder::class,
         ]);
     }
 }

@@ -16,7 +16,8 @@
                     <thead class="bg-primary text-white">
                         <tr>
                             <th width="10%" class="text-center">No.</th>
-                            <th width="70%" class="text-start">Name</th>
+                            <th width="20%" class="text-center">Kode Wilayah</th>
+                            <th width="50%" class="text-start">Name</th>
                             <th width="20%" class="text-center">Action</th>
                         </tr>
                     </thead>
@@ -24,6 +25,7 @@
                         @foreach ($desas as $item)
                             <tr>
                                 <td class="text-center">{{ $no++ }}</td>
+                                <td class="text-center">{{ $item->id }}</td>
                                 <td class="text-start">{{ $item->nama }}</td>
                                 <td class="text-center">
                                     <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">

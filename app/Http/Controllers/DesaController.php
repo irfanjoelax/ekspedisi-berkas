@@ -39,15 +39,9 @@ class DesaController extends Controller
 
     public function submit(Request $request, $id = null)
     {
-        $dataID = Str::uuid();
-
-        if ($id != null) {
-            $dataID = $id;
-        };
-
         $data = [
-            'id'       => $dataID,
-            'nama'     => $request->nama,
+            'id'   => $request->id,
+            'nama' => strtoupper($request->nama),
         ];
 
         if ($id == null) {

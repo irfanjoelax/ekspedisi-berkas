@@ -22,6 +22,13 @@
             <form action="{{ $url }}" class="bg-white p-4 shadow-sm rounded-4" method="POST">
                 @csrf
                 <div class="row mb-4">
+                    <label for="id" class="col-sm-3 col-form-label">Kode Wilayah</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" name="id" placeholder="Masukkan Kode Wilayah"
+                            value="{{ $isEdit ? $data->id : old('id') }}" required>
+                    </div>
+                </div>
+                <div class="row mb-4">
                     <label for="nama" class="col-sm-3 col-form-label">Nama Desa</label>
                     <div class="col-sm-9">
                         <input type="text" class="form-control" name="nama" placeholder="Masukkan nama desa"
