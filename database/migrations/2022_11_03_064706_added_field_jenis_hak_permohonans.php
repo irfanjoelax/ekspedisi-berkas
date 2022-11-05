@@ -15,6 +15,7 @@ class AddedFieldJenisHakPermohonans extends Migration
     {
         Schema::table('permohonans', function (Blueprint $table) {
             $table->uuid('jenis_hak_id')->after('keterangan_id')->nullable();
+            $table->foreign('jenis_hak_id')->references('id')->on('jenis_haks');
         });
     }
 

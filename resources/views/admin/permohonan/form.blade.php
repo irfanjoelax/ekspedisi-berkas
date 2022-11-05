@@ -115,12 +115,12 @@
                 </div>
 
                 <div class="row mb-lg-3">
-                    <div class="col-md-4 col-12 mb-3">
+                    {{-- <div class="col-md-4 col-12 mb-3">
                         <label for="tanggal" class="form-label">Tanggal</label>
                         <input type="date" class="form-control" name="tanggal"
                             value="{{ $isEdit ? $data->tanggal : '' }}" required>
-                    </div>
-                    <div class="col-md-8 col-12 mb-3">
+                    </div> --}}
+                    <div class="col-md-12 col-12 mb-3">
                         <label for="tujuan" class="form-label">Tujuan</label>
                         <select name="tujuan" class="form-select" required>
                             @if (!$isEdit)

@@ -18,13 +18,16 @@ class CreatePermohonansTable extends Migration
             $table->string('no_berkas');
             $table->string('no_hak');
             $table->string('nama_berkas');
-            $table->uuid('desa_id');
+            $table->string('desa_id')->unique();
             $table->uuid('prosedur_id');
             $table->uuid('keterangan_id');
-            $table->date('tanggal');
             $table->enum('tujuan', ['kasi', 'kakan']);
             $table->enum('status', ['Dikembalikan', 'Terkirim']);
             $table->timestamps();
+
+            $table->foreign('desa_id')->references('id')->on('desas');
+            $table->foreign('prosedur_id')->references('id')->on('prosedurs');
+            $table->foreign('keterangan_id')->references('id')->on('keterangans');
         });
     }
 

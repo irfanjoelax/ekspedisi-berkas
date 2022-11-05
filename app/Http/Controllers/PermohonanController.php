@@ -70,7 +70,6 @@ class PermohonanController extends Controller
             'prosedur_id'   => $request->prosedur_id,
             'keterangan_id' => $request->keterangan_id,
             'jenis_hak_id'  => $request->jenis_hak_id,
-            'tanggal'       => $request->tanggal,
             'tujuan'        => $request->tujuan,
             'status'        => $status,
         ];
