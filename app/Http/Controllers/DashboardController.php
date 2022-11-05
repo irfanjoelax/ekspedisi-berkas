@@ -16,7 +16,7 @@ class DashboardController extends Controller
             'chart_title'           => 'Grafik Permohonan Per Bulan',
             'report_type'           => 'group_by_date',
             'model'                 => 'App\Models\Permohonan',
-            'group_by_field'        => 'created_at',
+            'group_by_field'        => 'updated_at',
             'group_by_period'       => 'day',
             'chart_type'            => 'bar',
             'chart_color'           => '17,138,178',
